@@ -11,6 +11,12 @@ describe "Bundler" do
   describe "Gemfile" do
     before :all do
       @gemfile_text = File.read('Gemfile')
+      "https://rubygems.org"
+      gem "rspec"
+      gem "sinatra"
+      
+      group :development do
+        gem "pry"
     end
 
     it "has correct syntax" do
