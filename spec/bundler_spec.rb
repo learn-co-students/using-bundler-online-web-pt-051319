@@ -61,7 +61,8 @@ describe "Bundler" do
 
       # http://bundler.io/v1.3/groups.html
       it "should contain the rspec gem in the test group using block syntax" do
-        expect(@gemfile_text =~ /group (:test|['"]test['"]) do/).not_to eq(nil)
+        expect(@gemfile_text).to  match(/gem ['"]rspec['"], ?(group:|:group ?=>) ?(:test|['"]test['"])/) | match(/group ?(:test|['"]test['"])[\s\S]*gem ['"]rspec['"][\s\S]*end/)
+        # expect(@gemfile_text =~ /group (:test|['"]test['"]) do/).not_to eq(nil)
         expect(@bundle_output =~ /rspec/).not_to eq(nil)
 
         bundle_output_without_test = ""
